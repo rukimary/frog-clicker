@@ -8,24 +8,30 @@ const User = sequelize.define(
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
-      allowNull: false,
     },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(255),
       allowNull: false,
     },
     email: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(255),
       allowNull: false,
+      unique: true,
     },
     password: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    clicks: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      defaultValue: 0,
       allowNull: false,
     },
   },
   {
-    createdAt: "created_at",
-    updatedAt: "updated_at",
+    underscored: true,
+    tableName: "users",
+    timestamps: true,
   }
 );
 
